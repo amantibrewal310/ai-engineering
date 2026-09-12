@@ -1,0 +1,106 @@
+{
+  "model": "gemini-3.5-flash-lite",
+  "temperature": 0.7,
+  "iterations": 5,
+  "results": [
+    {
+      "review": "The new smartphone is amazing, the camera quality is top-notch but the battery life is a bit disappointing. I love the design though!",
+      "unconstrained": {
+        "prompt": "Analyze the sentiment of the following review: The new smartphone is amazing, the camera quality is top-notch but the battery life is a bit disappointing. I love the design though!",
+        "metrics": {
+          "unique": 5,
+          "consistency": 20.0,
+          "total": 5
+        },
+        "responses": [
+          "**Overall Sentiment:** **Positive** (with minor mixed elements)\n\n**Detailed Breakdown:**\n\n*   **Positive Sentiments:** \n    *   *\"The new smartphone is amazing\"* (Strong positive statement)\n    *   *\"the camera quality is top-notch\"* (Positive)\n    *   *\"I love the design though!\"* (Strong positive)\n*   **Negative/Constructive Sentiment:** \n    *   *\"battery life is a bit disappointing\"* (Mildly negative)\n\n**Conclusion:** \nEven though there is a valid complaint about the battery life, the overwhelming enthusiasm for the phone's overall performance, camera, and design makes the overall sentiment clearly **positive**.",
+          "**Overall Sentiment:** **Positive** (with a minor mixed element)\n\n**Breakdown:**\n* **Positive Aspects:** \n    * \"The new smartphone is amazing\" (Strong positive)\n    * \"the camera quality is top-notch\" (Positive)\n    * \"I love the design though!\" (Strong positive)\n* **Negative Aspect:** \n    * \"the battery life is a bit disappointing\" (Negative)\n\n**Conclusion:** \nDespite the criticism regarding the battery life, the overwhelming majority of the review expresses strong enthusiasm, high satisfaction, and affection for the phone's design and camera. Therefore, the overall sentiment leans clearly positive.",
+          "Based on the review, the overall sentiment is **mixed, but predominantly positive**. \n\nHere is a breakdown of the sentiment by aspect:\n\n*   **Overall Impression:** Positive (\"The new smartphone is amazing\", \"I love the design though!\")\n*   **Camera:** Highly Positive (\"top-notch\")\n*   **Design:** Highly Positive (\"I love the design\")\n*   **Battery Life:** Negative (\"a bit disappointing\")\n\n**Conclusion:** While there is a valid complaint about the battery life, the enthusiasm for the overall experience, camera, and design outweighs the negative point, making the review lean on the positive side overall.",
+          "**Sentiment Analysis:**\n\n* **Overall Sentiment:** **Positive** (leaning mixed)\n* **Confidence Level:** High\n\n**Detailed Breakdown:**\n\n* **Positive Elements:** \n  * *\"The new smartphone is amazing\"* (Strong positive statement)\n  * *\"the camera quality is top-notch\"* (Specific positive praise)\n  * *\"I love the design though!\"* (Strong positive emotion)\n* **Negative Elements:** \n  * *\"battery life is a bit disappointing\"* (Mild negative critique)\n\n**Conclusion:** \nWhile the reviewer has one specific complaint about the battery life, the overwhelming majority of the review\u2014and the emotional tone used (\"amazing,\" \"top-notch,\" \"love\")\u2014is strongly positive. The criticism about the battery is framed as a minor drawback rather than a dealbreaker.",
+          "Based on the review, the sentiment is **mixed, but predominantly positive**. \n\nHere is a breakdown of the sentiment by component:\n\n*   **Positive Sentiments:** \n    *   \"The new smartphone is amazing\" (Strongly positive)\n    *   \"the camera quality is top-notch\" (Positive)\n    *   \"I love the design though!\" (Strongly positive)\n*   **Negative Sentiment:** \n    *   \"the battery life is a bit disappointing\" (Negative)\n\n**Conclusion:** \nWhile there is a specific complaint about the battery life, the reviewer's overall satisfaction is high, driven by their praise for the phone's performance, camera, and design."
+        ]
+      },
+      "constrained": {
+        "prompt": "Analyze the sentiment of the following review: The new smartphone is amazing, the camera quality is top-notch but the battery life is a bit disappointing. I love the design though!\n\nOutput only a JSON object matching this schema:\n```json\n{\n    \"sentiment\": (\"positive\",\"negative\",\"mixed\"),\n    \"confidence\": (\"Low\", \"Medium\", \"High\"),\n    \"key_aspects\": list of exact phrases quoted directly from the review (no abstract summaries)\n}\n```",
+        "metrics": {
+          "unique": 1,
+          "consistency": 100.0,
+          "total": 5
+        },
+        "responses": [
+          "```json\n{\n    \"sentiment\": \"mixed\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"amazing\",\n        \"camera quality is top-notch\",\n        \"battery life is a bit disappointing\",\n        \"love the design\"\n    ]\n}\n```",
+          "```json\n{\n    \"sentiment\": \"mixed\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"amazing\",\n        \"camera quality is top-notch\",\n        \"battery life is a bit disappointing\",\n        \"love the design\"\n    ]\n}\n```",
+          "```json\n{\n    \"sentiment\": \"mixed\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"amazing\",\n        \"camera quality is top-notch\",\n        \"battery life is a bit disappointing\",\n        \"love the design\"\n    ]\n}\n```",
+          "```json\n{\n    \"sentiment\": \"mixed\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"amazing\",\n        \"camera quality is top-notch\",\n        \"battery life is a bit disappointing\",\n        \"love the design\"\n    ]\n}\n```",
+          "```json\n{\n    \"sentiment\": \"mixed\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"amazing\",\n        \"camera quality is top-notch\",\n        \"battery life is a bit disappointing\",\n        \"love the design\"\n    ]\n}\n```"
+        ]
+      }
+    },
+    {
+      "review": "Bus left on time, seats were clean and the driver was polite. Great trip!",
+      "unconstrained": {
+        "prompt": "Analyze the sentiment of the following review: Bus left on time, seats were clean and the driver was polite. Great trip!",
+        "metrics": {
+          "unique": 5,
+          "consistency": 20.0,
+          "total": 5
+        },
+        "responses": [
+          "**Sentiment:** Positive\n\n**Analysis:** \nThe review uses favorable language and highlights multiple positive aspects of the experience (\"left on time,\" \"seats were clean,\" \"driver was polite\"). The concluding phrase, \"Great trip!\", is a direct and enthusiastic expression of satisfaction.",
+          "**Sentiment:** Positive\n\n**Analysis:** \nThe review highlights multiple positive aspects of the experience:\n* \"Bus left on time\" (punctuality/reliability)\n* \"Seats were clean\" (comfort/cleanliness)\n* \"Driver was polite\" (good customer service)\n* \"Great trip!\" (overall satisfaction)\n\nThere are no negative comments, making this strongly positive.",
+          "**Sentiment:** **Positive**\n\n**Analysis:** \nThe review expresses satisfaction through clear, complimentary statements. Phrases like \"left on time,\" \"seats were clean,\" \"driver was polite,\" and the concluding exclamation \"Great trip!\" all indicate a pleasant and favorable experience with the bus service.",
+          "**Sentiment:** Positive\n\n**Analysis:** \nThe review highlights multiple favorable aspects of the experience\u2014the bus left on time (reliability), the seats were clean (comfort/maintenance), and the driver was polite (customer service). This is reinforced by the concluding enthusiastic statement, \"Great trip!\"",
+          "**Sentiment:** Positive\n\n**Analysis:** \nThe review highlights multiple positive aspects of the experience (\"left on time,\" \"seats were clean,\" \"driver was polite\") and concludes with an explicit expression of satisfaction (\"Great trip!\"). There are no negative elements mentioned."
+        ]
+      },
+      "constrained": {
+        "prompt": "Analyze the sentiment of the following review: Bus left on time, seats were clean and the driver was polite. Great trip!\n\nOutput only a JSON object matching this schema:\n```json\n{\n    \"sentiment\": (\"positive\",\"negative\",\"mixed\"),\n    \"confidence\": (\"Low\", \"Medium\", \"High\"),\n    \"key_aspects\": list of exact phrases quoted directly from the review (no abstract summaries)\n}\n```",
+        "metrics": {
+          "unique": 1,
+          "consistency": 100.0,
+          "total": 5
+        },
+        "responses": [
+          "```json\n{\n    \"sentiment\": \"positive\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"Bus left on time\",\n        \"seats were clean\",\n        \"driver was polite\",\n        \"Great trip!\"\n    ]\n}\n```",
+          "```json\n{\n    \"sentiment\": \"positive\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"Bus left on time\",\n        \"seats were clean\",\n        \"driver was polite\",\n        \"Great trip!\"\n    ]\n}\n```",
+          "```json\n{\n    \"sentiment\": \"positive\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"Bus left on time\",\n        \"seats were clean\",\n        \"driver was polite\",\n        \"Great trip!\"\n    ]\n}\n```",
+          "```json\n{\n    \"sentiment\": \"positive\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"Bus left on time\",\n        \"seats were clean\",\n        \"driver was polite\",\n        \"Great trip!\"\n    ]\n}\n```",
+          "```json\n{\n    \"sentiment\": \"positive\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"Bus left on time\",\n        \"seats were clean\",\n        \"driver was polite\",\n        \"Great trip!\"\n    ]\n}\n```"
+        ]
+      }
+    },
+    {
+      "review": "The hotel room smelled of damp and nobody answered the reception phone all night.",
+      "unconstrained": {
+        "prompt": "Analyze the sentiment of the following review: The hotel room smelled of damp and nobody answered the reception phone all night.",
+        "metrics": {
+          "unique": 5,
+          "consistency": 20.0,
+          "total": 5
+        },
+        "responses": [
+          "**Sentiment:** Highly Negative\n\n**Key reasons for this sentiment:**\n* **\"Smelled of damp\":** Indicates an unpleasant, unsanitary, and uncomfortable physical environment.\n* **\"Nobody answered the reception phone all night\":** Highlights a severe lack of customer service, unresponsiveness, and an inability to get help during an issue.",
+          "**Sentiment:** Highly Negative\n\n**Key Elements Supporting This Analysis:**\n* **\"Smelled of damp\":** Indicates an unpleasant sensory experience and poor room conditions/hygiene.\n* **\"Nobody answered the reception phone all night\":** Highlights a severe failure in customer service, responsiveness, and basic hospitality standards. \n\nOverall, the review expresses deep dissatisfaction with both the physical environment and the service.",
+          "**Sentiment:** Very Negative\n\n**Analysis:** \nThe review highlights two distinct, significant service and facility failures: an unpleasant and potentially unhealthy room condition (\"smelled of damp\") and a complete lack of customer support during an issue (\"nobody answered the reception phone all night\"). Both points express strong dissatisfaction and frustration.",
+          "**Sentiment:** Highly Negative\n\n**Key Elements Supporting the Analysis:**\n* **Negative Sensory Details:** The mention of the room smelling of \"damp\" indicates poor cleanliness, maintenance, and overall unpleasant conditions.\n* **Poor Customer Service:** The failure of the reception staff to answer the phone \"all night\" highlights a severe lack of availability, support, and responsiveness in handling guest issues.",
+          "**Sentiment:** Highly Negative\n\n**Key reasons for this sentiment:**\n* **\"Smelled of damp\":** Indicates an unpleasant physical environment and poor maintenance.\n* **\"Nobody answered the reception phone all night\":** Highlights severe customer service failure and a lack of responsiveness during a time of need."
+        ]
+      },
+      "constrained": {
+        "prompt": "Analyze the sentiment of the following review: The hotel room smelled of damp and nobody answered the reception phone all night.\n\nOutput only a JSON object matching this schema:\n```json\n{\n    \"sentiment\": (\"positive\",\"negative\",\"mixed\"),\n    \"confidence\": (\"Low\", \"Medium\", \"High\"),\n    \"key_aspects\": list of exact phrases quoted directly from the review (no abstract summaries)\n}\n```",
+        "metrics": {
+          "unique": 1,
+          "consistency": 100.0,
+          "total": 5
+        },
+        "responses": [
+          "```json\n{\n    \"sentiment\": \"negative\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"smelled of damp\",\n        \"nobody answered the reception phone all night\"\n    ]\n}\n```",
+          "```json\n{\n    \"sentiment\": \"negative\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"smelled of damp\",\n        \"nobody answered the reception phone all night\"\n    ]\n}\n```",
+          "```json\n{\n    \"sentiment\": \"negative\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"smelled of damp\",\n        \"nobody answered the reception phone all night\"\n    ]\n}\n```",
+          "```json\n{\n    \"sentiment\": \"negative\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"smelled of damp\",\n        \"nobody answered the reception phone all night\"\n    ]\n}\n```",
+          "```json\n{\n    \"sentiment\": \"negative\",\n    \"confidence\": \"High\",\n    \"key_aspects\": [\n        \"smelled of damp\",\n        \"nobody answered the reception phone all night\"\n    ]\n}\n```"
+        ]
+      }
+    }
+  ]
+}
