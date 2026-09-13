@@ -1,5 +1,6 @@
 import json
 from collections import Counter
+
 from dotenv import load_dotenv
 from google import genai
 
@@ -72,7 +73,7 @@ def run_strategy(name, prompt, color):
         responses.append(resp)
         preview = resp.replace("\n", " ")
         preview = preview[:57] + "..." if len(preview) > 60 else preview
-        print(f"  {C_DIM}#{i+1:02d}{C_RESET} {color}●{C_RESET} {preview}")
+        print(f"  {C_DIM}#{i + 1:02d}{C_RESET} {color}●{C_RESET} {preview}")
     metrics = calculate_metrics(responses)
     return responses, metrics
 
@@ -108,7 +109,9 @@ def print_summary_table(results):
     print(f"\n{C_YELLOW}{'=' * 72}{C_RESET}")
     print(f"{' ' * 22}{C_BOLD}{C_YELLOW}BENCHMARK EVALUATION SUMMARY{C_RESET}")
     print(f"{C_YELLOW}{'=' * 72}{C_RESET}")
-    print(f"{C_BOLD}{'Review':<10} | {'Snippet':<24} | {'Unconstrained':<14} | {'Constrained':<12} | {'Delta Lift'}{C_RESET}")
+    print(
+        f"{C_BOLD}{'Review':<10} | {'Snippet':<24} | {'Unconstrained':<14} | {'Constrained':<12} | {'Delta Lift'}{C_RESET}"
+    )
     print(f"{C_DIM}{'-' * 72}{C_RESET}")
 
     total_u, total_c = 0.0, 0.0
@@ -121,52 +124,105 @@ def print_summary_table(results):
 
         snippet = r["review"][:21] + "..." if len(r["review"]) > 24 else r["review"]
         d_color = C_GREEN if delta > 0 else (C_RED if delta < 0 else C_DIM)
-        print(f"{f'Review {idx}':<10} | {C_DIM}{snippet:<24}{C_RESET} | {C_CYAN}{u_cons:>5.1f}%{'':<8}{C_RESET} | {C_MAGENTA}{c_cons:>5.1f}%{'':<6}{C_RESET} | {d_color}{delta:>+6.1f}%{C_RESET}")
+        print(
+            f"{f'Review {idx}':<10} | {C_DIM}{snippet:<24}{C_RESET} | {C_CYAN}{u_cons:>5.1f}%{'':<8}{C_RESET} | {C_MAGENTA}{c_cons:>5.1f}%{'':<6}{C_RESET} | {d_color}{delta:>+6.1f}%{C_RESET}"
+        )
 
     avg_u, avg_c = total_u / len(results), total_c / len(results)
     avg_delta = avg_c - avg_u
     avg_color = C_GREEN if avg_delta > 0 else C_DIM
 
     print(f"{C_DIM}{'-' * 72}{C_RESET}")
-    print(f"{C_BOLD}{'AVERAGE':<10} | {'Across all reviews':<24} | {C_CYAN}{avg_u:>5.1f}%{'':<8}{C_RESET} | {C_MAGENTA}{avg_c:>5.1f}%{'':<6}{C_RESET} | {avg_color}{avg_delta:>+6.1f}%{C_RESET}")
+    print(
+        f"{C_BOLD}{'AVERAGE':<10} | {'Across all reviews':<24} | {C_CYAN}{avg_u:>5.1f}%{'':<8}{C_RESET} | {C_MAGENTA}{avg_c:>5.1f}%{'':<6}{C_RESET} | {avg_color}{avg_delta:>+6.1f}%{C_RESET}"
+    )
     print(f"{C_YELLOW}{'=' * 72}{C_RESET}")
 
     if avg_c > avg_u:
-        print(f"{C_BOLD}{C_GREEN}✔ VERDICT: Schema constraints reliably reduced non-determinism across reviews!{C_RESET}")
+        print(
+            f"{C_BOLD}{C_GREEN}✔ VERDICT: Schema constraints reliably reduced non-determinism across reviews!{C_RESET}"
+        )
     print(f"{C_YELLOW}{'=' * 72}{C_RESET}\n")
 
 
 if __name__ == "__main__":
     reviews = load_reviews()
-    print(f"\n{C_BOLD}{C_YELLOW}=== LLM Non-Determinism Benchmark ({len(reviews)} reviews) ==={C_RESET}")
-    print(f"{C_DIM}Model: {MODEL} | Temp: {TEMP} | Runs/Strategy: {ITERATIONS}{C_RESET}\n")
+    print(
+        f"\n{C_BOLD}{C_YELLOW}=== LLM Non-Determinism Benchmark ({len(reviews)} reviews) ==={C_RESET}"
+    )
+    print(
+        f"{C_DIM}Model: {MODEL} | Temp: {TEMP} | Runs/Strategy: {ITERATIONS}{C_RESET}\n"
+    )
 
     results = []
     unconstrained_log, constrained_log = [], []
 
     for idx, review in enumerate(reviews, 1):
-        print(f"{C_YELLOW}▶ [Review {idx}/{len(reviews)}]{C_RESET} \"{review}\"\n")
+        print(f'{C_YELLOW}▶ [Review {idx}/{len(reviews)}]{C_RESET} "{review}"\n')
         u_prompt, c_prompt = build_prompts(review)
 
-        u_responses, u_metrics = run_strategy("Strategy A: Unconstrained", u_prompt, C_CYAN)
-        c_responses, c_metrics = run_strategy("Strategy B: Constrained", c_prompt, C_MAGENTA)
+        u_responses, u_metrics = run_strategy(
+            "Strategy A: Unconstrained", u_prompt, C_CYAN
+        )
+        c_responses, c_metrics = run_strategy(
+            "Strategy B: Constrained", c_prompt, C_MAGENTA
+        )
         print()
 
-        results.append({
-            "review": review,
-            "unconstrained": {"prompt": u_prompt, "metrics": u_metrics, "responses": u_responses},
-            "constrained": {"prompt": c_prompt, "metrics": c_metrics, "responses": c_responses},
-        })
-        unconstrained_log.append({"review": review, "prompt": u_prompt, "metrics": u_metrics, "responses": u_responses})
-        constrained_log.append({"review": review, "prompt": c_prompt, "metrics": c_metrics, "responses": c_responses})
+        results.append(
+            {
+                "review": review,
+                "unconstrained": {
+                    "prompt": u_prompt,
+                    "metrics": u_metrics,
+                    "responses": u_responses,
+                },
+                "constrained": {
+                    "prompt": c_prompt,
+                    "metrics": c_metrics,
+                    "responses": c_responses,
+                },
+            }
+        )
+        unconstrained_log.append(
+            {
+                "review": review,
+                "prompt": u_prompt,
+                "metrics": u_metrics,
+                "responses": u_responses,
+            }
+        )
+        constrained_log.append(
+            {
+                "review": review,
+                "prompt": c_prompt,
+                "metrics": c_metrics,
+                "responses": c_responses,
+            }
+        )
 
     print_summary_table(results)
 
     # Save Markdown & JSON logs
-    save_markdown("output-unconstrained.md", "Strategy A: Unconstrained", unconstrained_log)
-    save_markdown("output-constrained.md", "Strategy B: Constrained (JSON)", constrained_log)
+    save_markdown(
+        "output-unconstrained.md", "Strategy A: Unconstrained", unconstrained_log
+    )
+    save_markdown(
+        "output-constrained.md", "Strategy B: Constrained (JSON)", constrained_log
+    )
 
     with open("output_results.json", "w", encoding="utf-8") as f:
-        json.dump({"model": MODEL, "temperature": TEMP, "iterations": ITERATIONS, "results": results}, f, indent=2)
+        json.dump(
+            {
+                "model": MODEL,
+                "temperature": TEMP,
+                "iterations": ITERATIONS,
+                "results": results,
+            },
+            f,
+            indent=2,
+        )
 
-    print(f"{C_BOLD}Saved logs to:{C_RESET} output-unconstrained.md, output-constrained.md, output_results.json\n")
+    print(
+        f"{C_BOLD}Saved logs to:{C_RESET} output-unconstrained.md, output-constrained.md, output_results.json\n"
+    )
